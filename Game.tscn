@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Teste.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 35.9558, 34.7557 )
+
+[node name="Game" type="Node2D" index="0"]
+
+[node name="Teste" type="Sprite" parent="." index="0"]
+
+position = Vector2( 487.964, 262.384 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="Teste" index="0"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Teste/Area2D" index="0"]
+
+shape = SubResource( 1 )
+
+[connection signal="mouse_entered" from="Teste/Area2D" to="Teste" method="_on_Area2D_mouse_entered"]
+
+[connection signal="mouse_exited" from="Teste/Area2D" to="Teste" method="_on_Area2D_mouse_exited"]
+
+
